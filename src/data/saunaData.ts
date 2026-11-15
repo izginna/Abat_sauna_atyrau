@@ -1,9 +1,3 @@
-import heroSaunaImg from '../assets/images/hero_sauna_interior_1794757276795.jpg';
-import zoneDrySaunaImg from '../assets/images/zone_dry_sauna_1794757277207.jpg';
-import zonePoolImg from '../assets/images/zone_pool_1794757277087.jpg';
-import zoneBilliardsKaraokeImg from '../assets/images/zone_billiards_karaoke_1794757277849.jpg';
-import zoneSpaMassageImg from '../assets/images/zone_spa_massage_1794757277815.jpg';
-
 export interface AmenityZone {
   id: string;
   index: string;
@@ -12,8 +6,8 @@ export interface AmenityZone {
   description: string;
   details: string[];
   image: string;
+  imagePosition?: string;
   alt: string;
-  featured?: boolean;
 }
 
 export interface ExtraService {
@@ -39,54 +33,47 @@ export const SAUNA_CONFIG = {
   phoneDisplay: '+7 700 020 59 99',
   phoneRaw: '77000205999',
   whatsappBaseUrl: 'https://wa.me/77000205999',
-  heroImage: heroSaunaImg,
+  heroImage: '/assets/aistudio/IMG_2404_02c6fb19.jpeg',
+  heroVideo: '/assets/aistudio/261207dd-4348-4ea6-b34b-7293ed989aeb_788fa34b.MP4',
+  heroVideoPoster: '/assets/aistudio/IMG_2402_6d985e13.jpeg',
 };
 
 export const AMENITY_ZONES: AmenityZone[] = [
   {
-    id: 'dry-sauna',
-    index: '01',
-    title: 'Сухая парилка',
-    subtitle: 'Жар кедра и натуральный камень',
-    description:
-      'Просторная финская парная с отделкой из натурального дерева и мягким сухим жаром. Идеальная температура для глубокого прогрева и восстановления сил.',
-    details: ['Сухой финский пар', 'Многоуровневые полки', 'Вместимость до 10 гостей'],
-    image: zoneDrySaunaImg,
-    alt: 'Сухая финская парилка в сауне ABAT с деревянными полками и каменкой',
-  },
-  {
     id: 'pool',
-    index: '02',
+    index: '01',
     title: 'Тёплый бассейн',
     subtitle: 'Чистая вода после парной',
     description:
-      'Приватный крытый бассейн с комфортной температурой воды, мягкой подсветкой и зоной отдыха для контрастного обновления после горячего пара.',
-    details: ['Фильтрация воды', 'Удобный спуск', 'Шезлонги у воды'],
-    image: zonePoolImg,
-    alt: 'Крытый бассейн в сауне ABAT с каменной отделкой и тёплой подсветкой',
+      'Крытый бассейн с чистой водой, удобной лестницей и отделкой натуральным деревом. Отличное освежение сразу после горячей сухой парилки.',
+    details: ['Чистая вода', 'Удобный спуск', 'Выход из парной'],
+    image: '/assets/aistudio/IMG_2402_6d985e13.jpeg',
+    imagePosition: 'object-[50%_72%]',
+    alt: 'Крытый бассейн в сауне ABAT с деревянными стенами и лестницей',
   },
   {
-    id: 'billiards-karaoke',
+    id: 'billiards',
+    index: '02',
+    title: 'Бильярдный зал',
+    subtitle: 'Отдельная игровая зона',
+    description:
+      'Полноразмерный бильярдный стол с зелёным сукном, профессиональным освещением и уютным тёплым интерьером для компании друзей.',
+    details: ['Большой стол', 'Кии и шары в комплекте', 'Кондиционер'],
+    image: '/assets/aistudio/IMG_2399_7c7f5033.jpeg',
+    imagePosition: 'object-[50%_58%]',
+    alt: 'Бильярдный зал в сауне ABAT',
+  },
+  {
+    id: 'lounge-karaoke',
     index: '03',
-    title: 'Караоке и бильярд',
-    subtitle: 'Вечерний досуг для всей компании',
+    title: 'Гостиная и караоке',
+    subtitle: 'Стол, диван и музыка',
     description:
-      'Отдельная гостиная с полноразмерным бильярдным столом, качественной акустикой, беспроводными микрофонами и мягкой зоной, где можно накрыть свой стол.',
-    details: ['Бильярдный стол', 'Караоке-система', 'Своя еда и напитки разрешены'],
-    image: zoneBilliardsKaraokeImg,
-    alt: 'Зал отдыха с бильярдным столом и караоке в сауне ABAT',
-    featured: true,
-  },
-  {
-    id: 'spa-extras',
-    index: '04',
-    title: 'Пилинг и массаж',
-    subtitle: 'Дополнительные спа-процедуры',
-    description:
-      'По желанию к отдыху можно добавить оздоровительный массаж или очищающий пилинг тела. Укажите нужную процедуру в календаре при бронировании.',
-    details: ['Пилинг тела', 'Расслабляющий массаж', 'По предварительному заказу'],
-    image: zoneSpaMassageImg,
-    alt: 'Спа-зона для пилинга и массажа в сауне ABAT',
+      'Просторная комната отдыха с большим столом, кожаным диваном, телевизором с караоке и чайной зоной. Еду и напитки можно приносить с собой.',
+    details: ['Караоке и ТВ', 'До 10 гостей', 'Своя еда и напитки разрешены'],
+    image: '/assets/aistudio/IMG_2404_02c6fb19.jpeg',
+    imagePosition: 'object-center',
+    alt: 'Гостиная с диваном, столом и караоке в сауне ABAT',
   },
 ];
 

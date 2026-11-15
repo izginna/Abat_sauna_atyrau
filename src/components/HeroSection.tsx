@@ -53,24 +53,41 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column: Dominant 16:9 Architectural Focal Image */}
-          <div className="lg:col-span-7">
-            <div className="relative h-full min-h-[260px] sm:min-h-[380px] lg:min-h-[460px] rounded-xl overflow-hidden border border-[#E0D9CD] bg-[#1C1814]">
-              <ResilientImage
-                src={SAUNA_CONFIG.heroImage}
-                alt="Интерьер сауны ABAT: тёплый бассейн, кедровая сухая парилка и зона отдыха"
-                className="w-full h-full lg:h-full object-cover"
-                fallbackTitle={SAUNA_CONFIG.brandName}
-              />
-              <div
-                aria-hidden="true"
-                className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/75 via-black/30 to-transparent pointer-events-none"
-              />
-              <div className="absolute bottom-4 left-5 right-5 flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm text-[#F7F4EE]">
-                <span className="font-medium">Комплекс целиком в вашем распоряжении</span>
-                <span className="font-mono tabular-nums text-[#E8C9A4]">
-                  {SAUNA_CONFIG.hoursLabel}
-                </span>
+          {/* Right Column: Official Photo + Video Tour */}
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
+            <div className="rounded-xl overflow-hidden border border-[#E0D9CD] bg-[#14110E] flex flex-col">
+              <div className="aspect-[3/4] w-full flex-1 overflow-hidden">
+                <ResilientImage
+                  src={SAUNA_CONFIG.heroImage}
+                  alt="Сауна ABAT — зал отдыха, караоке и общий стол"
+                  className="w-full h-full object-cover object-center"
+                  fallbackTitle={SAUNA_CONFIG.brandName}
+                />
+              </div>
+              <div className="px-4 py-2.5 bg-[#181512] text-xs text-[#DFD8CE] flex items-center justify-between gap-2 border-t border-[#2A241E]">
+                <span>Зал отдыха и караоке</span>
+                <span className="text-[#D89B5E]">Фото</span>
+              </div>
+            </div>
+
+            <div className="rounded-xl overflow-hidden border border-[#E0D9CD] bg-[#14110E] flex flex-col">
+              <div className="aspect-[3/4] w-full flex-1 overflow-hidden bg-[#14110E]">
+                <video
+                  src={SAUNA_CONFIG.heroVideo}
+                  poster={SAUNA_CONFIG.heroVideoPoster}
+                  controls
+                  playsInline
+                  muted
+                  autoPlay
+                  loop
+                  preload="metadata"
+                  aria-label="Видеоэкскурсия по залам сауны ABAT"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="px-4 py-2.5 bg-[#181512] text-xs text-[#DFD8CE] flex items-center justify-between gap-2 border-t border-[#2A241E]">
+                <span>Видеоэкскурсия по залам</span>
+                <span className="text-[#D89B5E]">Видео</span>
               </div>
             </div>
           </div>

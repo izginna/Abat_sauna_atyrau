@@ -1,4 +1,4 @@
-import { Check } from 'lucide-react';
+import { ArrowDownRight, Check } from 'lucide-react';
 import { AMENITY_ZONES, SAUNA_CONFIG } from '../data/saunaData';
 import { ResilientImage } from './ResilientImage';
 
@@ -14,73 +14,89 @@ export function AmenitiesBento() {
               className="mt-1.5 font-display font-semibold text-[#171412] leading-[1.1] tracking-tight"
               style={{ fontSize: 'clamp(1.75rem, 3vw, 2.75rem)', textWrap: 'balance' }}
             >
-              Всё для банного отдыха в одном месте
+              Реальные залы и атмосфера ABAT
             </h2>
           </div>
           <p className="text-sm sm:text-base text-[#5A534A] max-w-[42ch]">
-            Четыре продуманные зоны: от горячего финского пара до бильярда, караоке и спа-ухода.
+            Продуманное пространство для отдыха: тёплый бассейн, бильярд, гостиная с караоке и сухая парилка.
           </p>
         </div>
 
-        {/* Asymmetric Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          {AMENITY_ZONES.map((zone, idx) => {
-            // Row 1: 7 cols + 5 cols; Row 2: 7 cols (featured) + 5 cols
-            const spanClass =
-              idx === 0 || idx === 2 ? 'md:col-span-7' : 'md:col-span-5';
+        {/* 3-Column Portrait Gallery matching real uploaded photos */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {AMENITY_ZONES.map((zone) => (
+            <article
+              key={zone.id}
+              className="group rounded-xl border border-[#E0D9CD] bg-[#FBF9F5] overflow-hidden flex flex-col"
+            >
+              <div className="aspect-[3/4] w-full overflow-hidden bg-[#181512]">
+                <ResilientImage
+                  src={zone.image}
+                  alt={zone.alt}
+                  fallbackTitle={zone.title}
+                  className={`w-full h-full object-cover ${zone.imagePosition ?? 'object-center'} transition-transform duration-300 group-hover:scale-[1.02]`}
+                />
+              </div>
 
-            return (
-              <article
-                key={zone.id}
-                className={`${spanClass} group rounded-xl border border-[#E0D9CD] bg-[#FBF9F5] overflow-hidden flex flex-col`}
-              >
-                <div className="aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden bg-[#1E1A16]">
-                  <ResilientImage
-                    src={zone.image}
-                    alt={zone.alt}
-                    fallbackTitle={zone.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                  />
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="text-xs font-medium text-[#7B7267]">
+                    {zone.subtitle}
+                  </div>
+                  <h3 className="mt-1 font-display text-2xl font-semibold text-[#171412] leading-tight">
+                    {zone.index}. {zone.title}
+                  </h3>
+
+                  <p className="mt-2.5 text-sm leading-relaxed text-[#4E473F]">
+                    {zone.description}
+                  </p>
                 </div>
 
-                <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-baseline justify-between gap-3">
-                      <h3 className="font-display text-2xl sm:text-[28px] font-semibold text-[#171412] leading-tight">
-                        {zone.index}. {zone.title}
-                      </h3>
-                      <span className="text-xs font-medium text-[#7B7267] shrink-0">
-                        {zone.subtitle}
-                      </span>
-                    </div>
-
-                    <p className="mt-3 text-sm sm:text-[15px] leading-relaxed text-[#4E473F]">
-                      {zone.description}
-                    </p>
-                  </div>
-
-                  <div className="mt-5 pt-4 border-t border-[#EAE4D9] flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs font-medium text-[#5A534A]">
-                    {zone.details.map((detail, detailIdx) => (
-                      <span key={detail} className="inline-flex items-center gap-2">
-                        {detailIdx > 0 && (
-                          <span aria-hidden="true" className="text-[#B8AE9F]">
-                            ·
-                          </span>
-                        )}
-                        <span>{detail}</span>
-                      </span>
-                    ))}
-                  </div>
+                <div className="mt-5 pt-4 border-t border-[#EAE4D9] flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs font-medium text-[#5A534A]">
+                  {zone.details.map((detail, detailIdx) => (
+                    <span key={detail} className="inline-flex items-center gap-2">
+                      {detailIdx > 0 && (
+                        <span aria-hidden="true" className="text-[#B8AE9F]">
+                          ·
+                        </span>
+                      )}
+                      <span>{detail}</span>
+                    </span>
+                  ))}
                 </div>
-              </article>
-            );
-          })}
+              </div>
+            </article>
+          ))}
         </div>
 
-        {/* Transparent Pricing & House Rules (Adjacent Proof & Rules) */}
+        {/* Zone 04: Dry Sauna + Peeling & Massage */}
+        <div className="mt-6 rounded-xl border border-[#E0D9CD] bg-[#FBF9F5] p-6 sm:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div className="max-w-2xl">
+            <div className="text-xs font-medium text-[#9E5B24]">
+              Парная и дополнительный уход
+            </div>
+            <h3 className="mt-1 font-display text-2xl sm:text-3xl font-semibold text-[#171412]">
+              04. Сухая парилка, пилинг и массаж
+            </h3>
+            <p className="mt-2 text-sm sm:text-base text-[#4E473F] leading-relaxed">
+              Сухая финская парилка с отделкой из дерева (её также видно в видеообзоре выше)
+              включена в стоимость аренды. По желанию можно дополнительно заказать пилинг
+              или массаж — просто отметьте эти услуги в форме бронирования.
+            </p>
+          </div>
+          <a
+            href="#booking"
+            className="inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold text-[#171412] border border-[#D4CCC0] hover:bg-[#EFEAE1] rounded-lg transition-colors whitespace-nowrap shrink-0"
+          >
+            <span>Выбрать услуги в календаре</span>
+            <ArrowDownRight className="w-4 h-4 text-[#9E5B24]" />
+          </a>
+        </div>
+
+        {/* Transparent Pricing & House Rules */}
         <div
           id="pricing"
-          className="mt-12 rounded-xl border border-[#D9D1C5] bg-[#181512] text-[#F7F4EE] p-6 sm:p-8 lg:p-10"
+          className="mt-10 rounded-xl border border-[#D9D1C5] bg-[#181512] text-[#F7F4EE] p-6 sm:p-8 lg:p-10"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <div className="lg:col-span-5">
