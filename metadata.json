@@ -1,0 +1,6 @@
+{
+  "name": "Сауна ABAT — Атырау",
+  "description": "Приватная сауна ABAT в Атырау (Ширина, Алтынколь, 9). Сухая парилка, бассейн, караоке, бильярд, пилинг и массаж. Акция 3/1, онлайн-бронирование в WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
